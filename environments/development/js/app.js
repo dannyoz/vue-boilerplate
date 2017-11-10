@@ -1,5 +1,34 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"centre\">\n\t<h1>Vue boilderplate</h1>\n</div>\n"
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _package = require('../../package.json');
+
+var _package2 = _interopRequireDefault(_package);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+	data: function data() {
+		return {
+			version: _package2.default.version
+		};
+	},
+	ready: function ready() {
+		// Emit ready event.
+		io.emit('ready');
+
+		// Listen for the talk event.
+		io.on('talk', function (data) {
+			alert(data.message);
+		});
+	}
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"centre\">\n\t<h1>Vue boilderplate</h1>\n\t<p class=\"small\">v{{version}}</p>\n\t<p>Node | Express.io | Vue | Gulp | Spice</p>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -10,7 +39,7 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update("_v-19327990", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":5,"vue-hot-reload-api":4}],2:[function(require,module,exports){
+},{"../../package.json":6,"vue":5,"vue-hot-reload-api":4}],2:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -10637,4 +10666,57 @@ setTimeout(function () {
 
 module.exports = Vue;
 }).call(this,require("7YKIPe"))
-},{"7YKIPe":3}]},{},[2])
+},{"7YKIPe":3}],6:[function(require,module,exports){
+module.exports={
+  "name": "vueboilerplate",
+  "version": "1.3.1",
+  "description": "Vue boilerplate",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "babel-core": "^6.14.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-runtime": "^6.11.6",
+    "babelify": "^6.1.2",
+    "body-parser": "^1.17.1",
+    "browserify": "^13.1.0",
+    "coffee-script": "^1.12.7",
+    "connect": "^3.6.5",
+    "express": "4.13.3",
+    "express.io": "^1.1.13",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-express": "^0.3.5",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-sass": "^2.1.0",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-vueify": "0.0.3",
+    "nodemailer": "^2.6.4",
+    "socket.io": "^2.0.4",
+    "spice-sass": "^1.1.1",
+    "superagent": "^2.3.0",
+    "vue": "^1.0.26",
+    "vueify": "^8.7.0",
+    "vueify-insert-css": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/node-js-getting-started"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
+
+},{}]},{},[2])
