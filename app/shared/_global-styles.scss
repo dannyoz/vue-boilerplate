@@ -11,19 +11,19 @@ $secondary: $col-amethyst;
 @include googleFont('roboto', body button input);
 
 body {
-	//background-color:#000;
-	color:$primary;
 	@include verticalRhythm;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	text-align: center;
-	text-transform: uppercase;
-	letter-spacing: 0.3rem;
+	color:$primary;
 }
 
 .centre {
+	text-align: center;
 	@include centre;
 }
 
-@include containerClass(1280px);
+.small {
+	@include fontSize(14px);
+}

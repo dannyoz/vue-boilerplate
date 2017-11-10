@@ -8,13 +8,17 @@
         <meta property="og:title"        content="derp" />
         <meta property="og:description"  content="derp" />
         <meta property="og:image"        content="derp" />
-	<title>js app app</title>
+	<title>Vue Boilerplate</title>
 	<link rel="stylesheet" type="text/css" media="all" href="/css/styles.css" />
 </head>
 <body>
     <div id="js-app">
     	<index></index>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        io = io.connect();
+    </script>
     <script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>
