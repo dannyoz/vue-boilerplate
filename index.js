@@ -7,7 +7,10 @@ const environment = process.env.NODE_ENV || 'development';
 const envPath     = __dirname+'/environments/'+environment+'/';
 const routes      = require(__dirname+'/express/routing').routes;
 const staticDirs  = require(__dirname+'/express/routing').staticDirs;
+const apiGetRoutes  = require(__dirname+'/express/api-get-routes');
+const apiPostRoutes = require(__dirname+'/express/api-post-routes');
 const err404      = require(__dirname+'/express/routing').err404;
+const constants     = require(__dirname+'/app/shared/constants');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
@@ -24,9 +27,19 @@ staticDirs.forEach(function (dir){
   app.use('/'+dir, express.static(envPath+dir));
 });
 
-app.get('/env', function(req, res) {
-	res.status(200).send(process.env);
-});
+for (var route in apiGetRoutes) {
+	app.get(`${constants.API_VERSION}${route}`, apiGetRoutes[route]);
+}
+
+for (var route in apiPostRoutes) {
+	app.post(`${constants.API_VERSION}${route}`, apiPostRoutes[route]);
+}
+
+if (!process.env.PORT) {
+  app.get('/env', function(req, res) {
+    res.status(200).send(process.env);
+  });
+}
 
 app.use(err404);
 
