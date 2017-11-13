@@ -45,7 +45,7 @@ app.use(err404);
 
 app.io.route('ready', function(req) {
   req.io.emit('talk', {
-      message: 'io event from an io route on the server'
+    message: 'io event from an io route on the server'
   });
 });
 
